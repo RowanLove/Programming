@@ -6,12 +6,13 @@ namespace GoneHome
 {
     public class Player : MonoBehaviour
     {
-        public float movemoentspeed = 10f;
-        private Rigidbody ridgid;
+        public float acceleration = 10f;
+        public float maxVelocity = 10f;
+        private Rigidbody rigid;
         // Use this for initialization
         void Start()
         {
-            ridgid = GetComponent<Rigidbody>();
+            rigid = GetComponent<Rigidbody>();
         }
 
         // Update is called once per frame
@@ -24,12 +25,18 @@ namespace GoneHome
            
             Vector3 inputDir = new Vector3(inputH, 0, inputV);
 
+            Transform cam = Camera.main.transform;
+            inputDir = Quaternion.AngleAxis(cam.eulerAngles.y, Vector3.up) * inputDir;
 
-            Vector3 position = transform.position;
+            rigid.AddForce(inputDir * acceleration);
 
-            position += inputDir * movemoentspeed * Time.deltaTime;
+            Vector3 vel = rigid.velocity;
 
-            ridgid.MovePosition(position);
+            if (vel.magnitude > maxVelocity)
+            {
+                vel = vel.normalized * maxVelocity;
+            }
+            rigid.velocity = vel;
         }
     }
 }

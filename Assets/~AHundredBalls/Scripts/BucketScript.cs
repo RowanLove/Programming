@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BucketScript : MonoBehaviour
 {
+    public float movementSpeed = 10.0f;
+
     private Rigidbody2D rigid2D;
     private Renderer[] renderers;
 
@@ -11,7 +13,7 @@ public class BucketScript : MonoBehaviour
 	void Start ()
     {
         rigid2D = GetComponent<Rigidbody2D>();
-        renderers = GetComponentInChildren<Renderer>();
+        renderers = GetComponentsInChildren<Renderer>();
 	}
 	
 	// Update is called once per frame
@@ -20,4 +22,32 @@ public class BucketScript : MonoBehaviour
         HandlePosition();
         HandleBoundary();
 	}
+    //Handles Bucketr position
+    void HandlePosition()
+    {
+        rigid2D.velocity = Vector3.left * movementSpeed;
+    }
+    //handles the screen boundaries for game object
+    void HandleBoundary()
+    {
+        Vector3 transformPos = transform.position;
+        //get the viewport position of where the bucket is
+        Vector3 viewportPos = Camera.main.WorldToViewportPoint(transformPos);
+        // is the gameobject visible from the camera and on the left hand side of it
+        if(IsVisible() == false && viewportPos.x < 0)
+        {
+            Destroy(gameObject);
+        } 
+    }
+    bool IsVisible()
+    {
+        foreach (var renderer in renderers)
+        {
+            if (renderer.isVisible)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

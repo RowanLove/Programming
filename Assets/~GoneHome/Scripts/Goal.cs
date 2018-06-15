@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.Events;
+
 namespace GoneHome
 {
     public class Goal : MonoBehaviour
     {
         public UnityEvent onTriggered;
-     
-        //runs function when collider enters triger (Goal) 
+        
+        // Fired off when another collider enters goal
         void OnTriggerEnter(Collider other)
         {
-            //check if other is "Player"
+            // Detect if other collider is player
             if (other.name == "Player")
             {
-                // run 'onTriggered' event
-
+                // Fire off our event (onTriggered)
                 onTriggered.Invoke();
             }
         }

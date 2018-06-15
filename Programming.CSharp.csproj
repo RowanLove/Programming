@@ -98,10 +98,15 @@
     <Compile Include="Assets\~AHundredBalls\Scripts\SpawnerScript.cs" />
     <Compile Include="Assets\~Asteroids\Scripts\Moving.cs" />
     <Compile Include="Assets\~GoneHome\Scripts\Death.cs" />
-    <Compile Include="Assets\~GoneHome\Scripts\Enemy.cs" />
+    <Compile Include="Assets\~GoneHome\Scripts\DestroyOnLifeTime.cs" />
+    <Compile Include="Assets\~GoneHome\Scripts\Enemies\FollowEnemy.cs" />
+    <Compile Include="Assets\~GoneHome\Scripts\Enemies\PatrolEnemy.cs" />
     <Compile Include="Assets\~GoneHome\Scripts\GameManager.cs" />
     <Compile Include="Assets\~GoneHome\Scripts\Goal.cs" />
     <Compile Include="Assets\~GoneHome\Scripts\Player.cs" />
+    <Compile Include="Assets\~Roll-a-ball\Scripts\CameraController.cs" />
+    <Compile Include="Assets\~Roll-a-ball\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\~Roll-a-ball\Scripts\Rotator.cs" />
     <Compile Include="Assets\~SunnyLand\Scripts\PlayerController.cs" />
     <Compile Include="Assets\~SunnyLand\Scripts\UserInput.cs" />
   </ItemGroup>

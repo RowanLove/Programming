@@ -109,7 +109,9 @@
     <Compile Include="Assets\~GoneHome\Scripts\Goal.cs" />
     <Compile Include="Assets\~GoneHome\Scripts\Player.cs" />
     <Compile Include="Assets\~Project\Scripts\Ball.cs" />
+    <Compile Include="Assets\~Project\Scripts\GameManager.cs" />
     <Compile Include="Assets\~Project\Scripts\Paddle.cs" />
+    <Compile Include="Assets\~Project\Scripts\SpawnPickUp.cs" />
     <Compile Include="Assets\~Roll-a-ball\Scripts\CameraController.cs" />
     <Compile Include="Assets\~Roll-a-ball\Scripts\PlayerController.cs" />
     <Compile Include="Assets\~Roll-a-ball\Scripts\Rotator.cs" />

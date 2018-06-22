@@ -23,19 +23,19 @@ namespace Project
             Vector3 reflect = Vector3.Reflect(velocity, contact.normal);
             //claculate new velocity from reflection multiply by the same speed (velocity.magnitude)
             velocity = reflect.normalized * velocity.magnitude;
+
+            // If I hit a block
+            if (other.gameObject.CompareTag("Blocks"))
+            {
+                // Deactivate it
+                other.gameObject.SetActive(false);
+            }
         }
         // Update is called once per frame
         void Update()
         {
             // move ball using velocity & deltaTime
             transform.position += velocity * Time.deltaTime;
-        }
-        void OnTriggerEnter(Collider other)
-        {
-          if (other.gameObject.CompareTag ("Blocks"))
-            {
-                other.gameObject.SetActive(false);
-            }
         }
     }
 }

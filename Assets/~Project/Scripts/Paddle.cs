@@ -11,6 +11,7 @@ namespace Project
         public Ball currentBall;
         public Text CountText;
         private int Count;
+        public bool hasFired;
         //directions array defaults
         public Vector2[] directions = new Vector2[]
         {
@@ -33,13 +34,17 @@ namespace Project
             Vector3 randomDir = directions[Random.Range(0, directions.Length)];
             // fire off ball in random direction
             currentBall.Fire(randomDir);
+            hasFired = true;
         }
 
         void CheckInput()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if(!hasFired)
             {
-                Fire();
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    Fire();
+                }
             }
         }
 
@@ -62,7 +67,7 @@ namespace Project
             CheckInput();
             Movement();
         }
-        void OnTriggerEnter(Collider other)
+        void OnTriggerEnter2D(Collider2D other)
         {
             if (other.gameObject.CompareTag("Pick Up"))
             {

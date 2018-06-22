@@ -67,6 +67,7 @@ namespace Project
             CheckInput();
             Movement();
         }
+        //gain score on pick up
         void OnTriggerEnter2D(Collider2D other)
         {
             if (other.gameObject.CompareTag("Pick Up"))
@@ -75,7 +76,15 @@ namespace Project
                 Count = Count + 1;
                 SetCountText();
             }
+            //lose points on bad pick up
+            if (other.gameObject.CompareTag("Pick Up Bad"))
+            {
+                other.gameObject.SetActive(false);
+                Count = Count - 1;
+                SetCountText();
+            }
         }
+        //counts score
         void SetCountText()
         {
             CountText.text = "Count: " + Count.ToString();
